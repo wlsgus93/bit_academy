@@ -1,0 +1,5 @@
+s = ['12','41','32','12','a']
+
+for i in s:
+    if type(int(s[i])) == 'int':
+        print(s[i])

@@ -1,6 +1,6 @@
-# Data Structure 
+# Data Structure / C 
 
-1. [c_workspace/insert.c] practice
-
+1. Week 2 : C
+2. Week 3 : Data Structure
 ---
 

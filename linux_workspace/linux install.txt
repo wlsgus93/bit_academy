@@ -2,5 +2,19 @@
 2. download
 - vmware player
 3. windows용 다운로드
-4. 저장 용량 확인 ( 50g) 이상
+4. 저장 용량 확인 ( 50gb) 이상
 5. PATH + enhanced keyboard driver
+6. finish install
+
+--------------------
+7. ubuntu install
+8. vmware 실행 / iso 선택 ( memory -> 4gb / core -> 2 이상)
+9. 설치 완료
+10. terminal 접속 
+11. sudo apt update
+12. sudo apt upgrade
+
+
+
+
+* ubuntu 뜻 : i am because you are

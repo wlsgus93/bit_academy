@@ -1,0 +1,6 @@
+1. vmware.com 
+2. download
+- vmware player
+3. windows용 다운로드
+4. 저장 용량 확인 ( 50g) 이상
+5. PATH + enhanced keyboard driver

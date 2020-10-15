@@ -11,9 +11,9 @@
 
 
 typedef struct {
-	int first;	//100ÀÇ ÀÚ¸® ¼ö
-	int second;	//10ÀÇ ÀÚ¸® ¼ö
-	int third;	//1ÀÇ ÀÚ¸® ¼ö 
+	int first;	//100ï¿½ï¿½ ï¿½Ú¸ï¿½ ï¿½ï¿½
+	int second;	//10ï¿½ï¿½ ï¿½Ú¸ï¿½ ï¿½ï¿½
+	int third;	//1ï¿½ï¿½ ï¿½Ú¸ï¿½ ï¿½ï¿½ 
 
 }randnum;
 typedef struct {
@@ -59,14 +59,14 @@ void _initout(outcount* out) {
 	out->strike= 0;
 }
 
-void _initrand(randnum* r) {		//ÀÌ´Ï¼È¶óÀÌÁî : Å¸°Ù »ý¼º
+void _initrand(randnum* r) {		//ï¿½Ì´Ï¼È¶ï¿½ï¿½ï¿½ï¿½ï¿½ : Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 	r = (randnum*)malloc(sizeof(randnum));
 
 	srand(time(NULL));
 	firstrand(r);
 	secondrand(r);
-	thirdrand(r);	//³­¼ö »ý¼º
+	thirdrand(r);	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 
 }
@@ -79,7 +79,7 @@ void firstrand(randnum* r) {
 void secondrand(randnum* r) {
 	int base = rand() % 10;
 	r->second = base;
-	if (r->first == base)	//1¹ø³­¼ö¿Í °°À¸¸é Àç½ÇÇà
+	if (r->first == base)	//1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 		secondrand(r);
 
 }
@@ -87,6 +87,6 @@ void secondrand(randnum* r) {
 void thirdrand(randnum* r) {
 	int base = rand() % 10;
 	r->third = base;
-	if (base == r->first || base == r->second)	//1¹ø ³­¼ö or 2¹ø ³­¼ö¿Í °°À¸¸é Àç½ÇÇà
+	if (base == r->first || base == r->second)	//1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ or 2ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 		thirdrand(r);
 }

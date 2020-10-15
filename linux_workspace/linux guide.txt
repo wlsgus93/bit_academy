@@ -14,7 +14,18 @@
 11. sudo apt update
 12. sudo apt upgrade
 
+-----------------------
+apache2 install / remove
+
+sudo apt install apache2 -> install 
+sudo service apache2 start
+
+sudo apt install net-tools -> ifconfig 등의 넷 도구들을 사용 가능하게 해줌
+
+ifconfig -> inet 나오는 ip주소 firefox 에서 입력 후 이상 없을 시 넷 연결 완료
 
 
 
+
+** 중간 중간 apt update 와 upgrade 계속 진행
 * ubuntu 뜻 : i am because you are

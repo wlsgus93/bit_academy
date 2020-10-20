@@ -58,7 +58,7 @@
 # >>> a[1] = 4
 # >>> print(b)
 # a,b각각 선언된게 아닌 같은 리스트 주소값을 공유
-
+#
 #
 # for i in range(2,10):
 #     for j in range(2,10):
@@ -80,7 +80,13 @@
 
 
 # while문을 사용해 1부터 1000까지의 자연수 중 3의 배수의 합을 구해 보자.
-
+# num = 0
+# sum = 0
+# while (num <= 1000):
+#     if (num % 3 == 0):
+#         sum = sum + num
+#     num = num + 1
+# print(sum)
 
 
 
@@ -90,15 +96,29 @@
 # ***
 # ****
 # *****
+# a = 1
+# while (a <= 5):
+#     print("*" * a)
+#     a = a + 1
+
+
 
 # for문을 사용해 1부터 100까지의 숫자를 출력해 보자.
+# for a in range(1,101):
+#     print(a)
 
 
 # A 학급에 총 10명의 학생이 있다. 이 학생들의 중간고사 점수는 다음과 같다.
 # [70, 60, 55, 75, 95, 90, 80, 80, 85, 100]
 # for문을 사용하여 A 학급의 평균 점수를 구해 보자.
-
-
+# avge = 0
+# i = 0
+# a = [70, 60, 55, 75, 95, 90, 80, 80, 85, 100]
+# for score in a:
+#     avge = avge + score
+#     i = i + 1
+# print(avge)
+# print(avge / i)
 
 
 # 리스트 중에서 홀수에만 2를 곱하여 저장하는 다음 코드가 있다.
@@ -109,7 +129,9 @@
 #         result.append(n*2)
 # 위 코드를 리스트 내포(list comprehension)를 사용하여 표현해 보자.
 
-
+# numbers = [1, 2, 3, 4, 5]
+# result = [n *2 for n in numbers if n % 2 == 1 ]
+# print(result)
 
 
 

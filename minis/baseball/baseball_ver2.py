@@ -86,7 +86,9 @@ def randrand(list):    #플레이 하고 싶은 숫자를 받아 생성시켜주
             print("put between 1 ~ 10")
 
     return targnum
-def zeroappend(list, a):
+
+
+def zeroappend(list, a): #유저가 0을 먼저(0123) 입력할 경우 자동으로 0번째 인덱스에 추가해주는 기능
     if len(a) != len(list):
         list.insert(0,0)
 

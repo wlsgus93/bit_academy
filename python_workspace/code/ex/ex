@@ -1,12 +1,19 @@
 def divider(list, a):
     if (a > 10):
         b = a % 10
-        list.append(b)
         divider(list,a//10)
+        list.append(b)
     else:
         list.append(a)
 
 list = []
 a = int(input())
 divider(list,a)
+
+for i in list:
+    for j in range(0,len(list),):
+        print((10 ** j)* i)
+
+
+
 print(list)

@@ -11,6 +11,7 @@ def divider(list, a):   #여러자리의 숫자를 편하게 리스트에 넣기
     else:
         list.append(a)
 
+
 def randmaker(list):    #사용자가 지정한 자리수의 숫자를 만드는 메소드
     a = random.randrange(0,10)  #랜덤 변수 1개 생성
     while (1):
@@ -29,13 +30,13 @@ def ball_counter(target, tries):    #볼은 스트라이크보다 맞추기가 �
     global strike
     ball = 0
     strike = 0
-    for i in range(0,3):
+    for i in range(0,len(tries)):
             if(tries[i] in target):     #만약 숫자가 타겟 리스트에 있을 경우
                 ball += 1               #볼 1개 추가 후
                 strike_counter(tries[i], target[i])     #스트라이크 검출기에 리스트 값을 넘김
     print(ball, "balls")
     print(strike, "strikes")
-
+    print(target)
 
 def strike_counter(a,b):
     global strike
@@ -62,15 +63,17 @@ def three_dig(list, a): #초기 버전. 3자리만 가능하게 만들어 놓음
 
 def guesser():   #유저가 주는 숫자 저장
 
-    trying = int(input("new try?")) 
+    trying = int(input("new try?"))
     tries = []      #시도를 새로 할 때마다 리스트 초기화
     three_dig(tries, trying)
     # print("tries", tries)
     return tries
 
 
-def randrand(list, targnum):    #플레이 하고 싶은 숫자를 받아 생성시켜주는 메소드
+def randrand(list):    #플레이 하고 싶은 숫자를 받아 생성시켜주는 메소드
+
     while(1):
+        targnum = int(input("how many numbers?"))
         if((targnum <= 10) and (targnum >= 1)):     #1~10개의 숫자만 사용 가능
             for i in range(0,targnum):
                 randmaker(list)
@@ -81,8 +84,8 @@ def randrand(list, targnum):    #플레이 하고 싶은 숫자를 받아 생성
         else:
             print("input out of range")         #10개를 초과할 경우 출력
             print("put between 1 ~ 10")
-            break
 
+    return targnum
 
 
 def main():
@@ -90,13 +93,15 @@ def main():
     global ball
     global strike
     i = 0
-    targnum = int(input("how many numbers?"))
     target = []
-    randrand(target, targnum)
-    tries = []
+    targnum = randrand(target)
 
     while(strike != targnum):
-        tries = guesser()
+        tries = []
+        a = int(input('new try?'))
+        divider(tries, a)
+        print('tries', tries)
+        # tries = guesser()
         # print("target ",target)
         ball_counter(target, tries)
         i += 1

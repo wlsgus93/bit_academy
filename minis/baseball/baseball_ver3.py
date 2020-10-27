@@ -62,7 +62,7 @@ def three_dig(list, a): #초기 버전. 3자리만 가능하게 만들어 놓음
 
 def guesser():   #유저가 주는 숫자 저장
 
-    trying = int(input("new try?")) 
+    trying = int(input("new try?"))
     tries = []      #시도를 새로 할 때마다 리스트 초기화
     three_dig(tries, trying)
     # print("tries", tries)
@@ -82,6 +82,8 @@ def randrand(list, targnum):    #플레이 하고 싶은 숫자를 받아 생성
             print("input out of range")         #10개를 초과할 경우 출력
             print("put between 1 ~ 10")
             break
+def helper():
+    pass
 
 
 
@@ -90,7 +92,7 @@ def main():
     global ball
     global strike
     i = 0
-    targnum = int(input("how many numbers?"))
+    targnum = 3
     target = []
     randrand(target, targnum)
     tries = []

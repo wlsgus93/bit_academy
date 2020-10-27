@@ -66,7 +66,7 @@ def guesser():   #유저가 주는 숫자 저장
     trying = int(input("new try?"))
     tries = []      #시도를 새로 할 때마다 리스트 초기화
     three_dig(tries, trying)
-    # print("tries", tries)
+    print("tries", tries)
     return tries
 
 
@@ -86,7 +86,9 @@ def randrand(list):    #플레이 하고 싶은 숫자를 받아 생성시켜주
             print("put between 1 ~ 10")
 
     return targnum
-
+def zeroappend(list, a):
+    if len(a) != len(list):
+        list.insert(0,0)
 
 def main():
 
@@ -98,8 +100,9 @@ def main():
 
     while(strike != targnum):
         tries = []
-        a = int(input('new try?'))
-        divider(tries, a)
+        a = input('new try?')
+        divider(tries, int(a))
+        zeroappend(tries,a)
         print('tries', tries)
         # tries = guesser()
         # print("target ",target)

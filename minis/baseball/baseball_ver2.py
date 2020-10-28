@@ -1,4 +1,5 @@
 import random
+import time
 
 ball = 0
 strike = 0
@@ -36,7 +37,7 @@ def ball_counter(target, tries):    #볼은 스트라이크보다 맞추기가 �
                 strike_counter(tries[i], target[i])     #스트라이크 검출기에 리스트 값을 넘김
     print(ball, "balls")
     print(strike, "strikes")
-    print(target)
+    # print(target)
 
 def strike_counter(a,b):
     global strike
@@ -66,7 +67,7 @@ def guesser():   #유저가 주는 숫자 저장
     trying = int(input("new try?"))
     tries = []      #시도를 새로 할 때마다 리스트 초기화
     three_dig(tries, trying)
-    print("tries", tries)
+    # print("tries", tries)
     return tries
 
 
@@ -110,7 +111,9 @@ def main():
         # print("target ",target)
         ball_counter(target, tries)
         i += 1
-    print("congratz! you got it in ", i, " tries!")
+    for t in range(0,i):
+        print("congratz! you got it in ", i, " tries!")
+        time.sleep(0.3)
 
 main()
 

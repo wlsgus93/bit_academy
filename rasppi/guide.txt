@@ -1,7 +1,7 @@
 pre-boot
-1. Win32DiskImager
-2. raspberry pi 설치
-3. sd카드에 imager 이용해서 설치.
+    1. Win32DiskImager
+    2. raspberry pi 설치
+    3. sd카드에 imager 이용해서 설치.
 
 --------------
 

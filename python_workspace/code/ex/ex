@@ -1,5 +1,36 @@
-a = input()
-b = [1,2,3,4]
-b.insert(0,0)
-print(int(a))
-print(b)
+def three_dig(list, a): #초기 버전. 3자리만 가능하게 만들어 놓음
+    hun_dig = a // 100
+    ten_dig = (a // 10) % 10
+    last_dig = a % 10
+    list.append(hun_dig)
+    list.append(ten_dig)
+    list.append(last_dig)
+
+def help(tries):
+    # global ball
+    # global strike
+    helping = ()
+    global helphelp
+    i = 0
+
+    for t in tries:
+        helping = (i,t)
+        i += 1
+        print(helping)
+        helphelp.append(helping)
+
+helphelp = []
+tries = []
+a = int(input("?"))
+three_dig(tries,a)
+help(tries)
+# print(helphelp[0][1])
+num = 0
+for i in range(0,3):
+    for j in range(0,10):
+        for k in range(0,10):
+            if((helphelp[i][1] != j) and (helphelp[i][1] != k) and (j != k)):
+                num = (helphelp[i][1] * 100) + (j * 10) + k
+                print('%03d' %num, end='\t')
+        print("")
+    print("---------------")

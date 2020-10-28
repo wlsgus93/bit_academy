@@ -2,6 +2,8 @@ import random
 
 ball = 0
 strike = 0
+helper = []
+skipper = []
 
 def divider(list, a):   #여러자리의 숫자를 편하게 리스트에 넣기 위한 메소드
     if (a > 10):
@@ -27,14 +29,18 @@ def newmaker(): #중복값일 경우 재생성 시켜주는 메소드
 def ball_counter(target, tries):    #볼은 스트라이크보다 맞추기가 쉬움.
     global ball
     global strike
+    global helper
     ball = 0
     strike = 0
     for i in range(0,3):
             if(tries[i] in target):     #만약 숫자가 타겟 리스트에 있을 경우
                 ball += 1               #볼 1개 추가 후
                 strike_counter(tries[i], target[i])     #스트라이크 검출기에 리스트 값을 넘김
+                if(tries[i] not in helper):
+                    helper.append(tries[i])
     print(ball, "balls")
     print(strike, "strikes")
+    help(tries)
 
 
 def strike_counter(a,b):
@@ -82,8 +88,22 @@ def randrand(list, targnum):    #플레이 하고 싶은 숫자를 받아 생성
             print("input out of range")         #10개를 초과할 경우 출력
             print("put between 1 ~ 10")
             break
-def helper():
-    pass
+
+
+def help(tries):
+    global ball
+    global strike
+    helping = ()
+    help = []
+    i = 0
+    if(ball > 0 or strike > 0):
+        for t in tries:
+            helping = (i,t)
+            i += 1
+            print(helping)
+            help.append(helping)
+    if(len(help)>0):
+        print('help ',help[0][1])
 
 
 
@@ -91,6 +111,7 @@ def main():
 
     global ball
     global strike
+    global helper
     i = 0
     targnum = 3
     target = []
@@ -101,7 +122,9 @@ def main():
         tries = guesser()
         # print("target ",target)
         ball_counter(target, tries)
+
         i += 1
+        print('helper', helper)
     print("congratz! you got it in ", i, " tries!")
 
 main()

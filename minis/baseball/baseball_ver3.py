@@ -40,7 +40,7 @@ def ball_counter(target, tries):    #볼은 스트라이크보다 맞추기가 �
                     helper.append(tries[i])
     print(ball, "balls")
     print(strike, "strikes")
-    help(tries)
+    hinter(tries)
 
 
 def strike_counter(a,b):
@@ -90,21 +90,94 @@ def randrand(list, targnum):    #플레이 하고 싶은 숫자를 받아 생성
             break
 
 
-def help(tries):
+def indexhelper(tries):
+
+    helping = ()
+    hint = []
+    i = 0
+
+    for t in tries:
+        helping = (i,t)
+        i += 1
+        print(helping)
+        hint.append(helping)
+    if(len(hint)>0):
+        print('help ',hint[0][1])
+
+    return hint
+
+def hinter(tries):
     global ball
     global strike
-    helping = ()
-    help = []
-    i = 0
-    if(ball > 0 or strike > 0):
-        for t in tries:
-            helping = (i,t)
-            i += 1
-            print(helping)
-            help.append(helping)
-    if(len(help)>0):
-        print('help ',help[0][1])
+    if (ball > 0 or strike > 0):
+        print("try one of these!")
+        if ball == 1:
+            oneball(tries)
+        elif ball == 2:
+            twoball(tries)
+        elif ball==1 and strike == 1:
+            onebones(tries)
+        elif ball==1 and strike== 2:
+            onebtwos(tries)
+        elif ball==2 and strike == 1:
+            twobones()
+        elif strike ==2:
+            twostrike()
+        elif strike == 1:
+            onestrike(tries)
 
+
+def oneball(tries):
+    pass
+
+def twoball(tries):
+    pass
+
+def threeball(tries):
+    pass
+
+def onebones(tries):
+    pass
+
+def onebtwos(tries):
+    pass
+
+def twobones(tries):
+    pass
+
+def twostrike(tries):
+    pass
+
+def onestrike(tries):
+    helphelp = []
+
+    helphelp = indexhelper(tries)
+    if helphelp[0][0] == 0:
+        for j in range(0, 10):
+            for k in range(0, 10):
+                if ((helphelp[0][1] != j) and (helphelp[0][1] != k) and (j != k)):
+                    if ((j not in tries) and (k not in tries)):
+                        num = ((helphelp[0][1]) * 100) + (j * 10) + k
+                        print('%03d' % num, end=' ')
+            print()
+    print('================')
+    if helphelp[1][0] == 1:
+        for j in range(0, 10):
+            for k in range(0, 10):
+                if ((helphelp[1][1] != j) and (helphelp[1][1] != k) and (j != k)):
+                    if ((j not in tries) and (k not in tries)):
+                        num = (j * 100) + (helphelp[1][1] * 10) + k
+                        print('%03d' % num, end=' ')
+            print()
+    print('================')
+    if helphelp[2][0] == 2:
+        for j in range(0, 10):
+            for k in range(0, 10):
+                if ((helphelp[2][1] != j) and (helphelp[2][1] != k) and (j != k)):
+                    if ((j not in tries) and (k not in tries)):
+                        num = (j * 100) + (k * 10) + helphelp[2][1]
+                        print('%03d' % num, end=' ')
+            print()
 
 
 def main():
@@ -124,6 +197,7 @@ def main():
         ball_counter(target, tries)
 
         i += 1
+
         print('helper', helper)
     print("congratz! you got it in ", i, " tries!")
 

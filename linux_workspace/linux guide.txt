@@ -61,7 +61,5 @@ install vsftpd
 
 ftp localhost -> user id, pw 
 
-
-
-** 중간 중간 apt update 와 upgrade 계속 진행
-* ubuntu 뜻 : i am because you are
+-------------------
+colab home dir = content

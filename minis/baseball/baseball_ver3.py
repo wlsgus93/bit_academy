@@ -4,7 +4,7 @@ ball = 0
 strike = 0
 helper = []
 skipper = []
-
+news = []
 def divider(list, a):   #여러자리의 숫자를 편하게 리스트에 넣기 위한 메소드
     if (a > 10):
         b = a % 10
@@ -99,16 +99,17 @@ def indexhelper(tries):
     for t in tries:
         helping = (i,t)
         i += 1
-        print(helping)
+        # print(helping)
         hint.append(helping)
-    if(len(hint)>0):
-        print('help ',hint[0][1])
+    # if(len(hint)>0):
+    #     print('help ',hint[0][1])
 
     return hint
 
 def hinter(tries):
     global ball
     global strike
+    global news
     if (ball > 0 or strike > 0):
         print("try one of these!")
         if ball == 1:
@@ -120,22 +121,61 @@ def hinter(tries):
         elif ball==1 and strike== 2:
             onebtwos(tries)
         elif ball==2 and strike == 1:
-            twobones()
+            twobones(tries)
         elif strike ==2:
-            twostrike()
+            twostrike(tries)
         elif strike == 1:
             onestrike(tries)
+        printer()
+        news.clear()
 
+
+def printer():
+    global skipper
+    global news
+    if(len(skipper) == 0):
+        for i in range(0,len(news)):
+            skipper.append(news[i])
+            print("%03d"%news[i],end='\t')
+    else:
+        for i in range(0,len(news)):
+            if news[i] in skipper:
+                print("%03d"%news[i],end="\t")
 
 def oneball(tries):
-    pass
+    global news
+    helphelp = []
+    helphelp = indexhelper(tries)
+    for x in range(0,3):
+        for j in range(0, 10):
+            for k in range(0, 10):
+                for i in range(0, 3):
+                    if ((helphelp[i][1] != j) and (helphelp[i][1] != k) and (j != k)):
+                        if ((j not in tries) and (k not in tries)):
+                            if(x!=i):
+                                num = helphelp[i][1]
+                                if (x == 0):
+                                    num = (num * 100) + (j * 10) + k
+                                elif (x == 1):
+                                    num = (j * 100) + (num * 10) + k
+                                elif (x == 2):
+                                    num = (j * 100) + (k * 10) + num
+                                news.append(num)
+
 
 def twoball(tries):
     pass
 
 def threeball(tries):
-    pass
-
+    global news
+    helphelp = []
+    helphelp = indexhelper(tries)
+    for i in range(0, 1):
+        if i == 0:
+            num = (helphelp[1][1]*100)+(helphelp[2][1]*10)+helphelp[0][1]
+        elif i == 1:
+            num = (helphelp[2][1]*100)+(helphelp[0][1]*10)+helphelp[1][1]
+        news.append(num)
 def onebones(tries):
     pass
 
@@ -146,38 +186,41 @@ def twobones(tries):
     pass
 
 def twostrike(tries):
-    pass
+    global news
+    elp = indexhelper(tries)
+    for i in range(0,3):
+        for j in range(0, 10):
+            if ((elp[i][1] != j) and (j != elp[i][1])):
+                if ((j not in tries)):
+                    if (i == 0):
+                        num = (elp[0][1] * 100) + (elp[1][1] * 10) + j
+                    elif (i == 1):
+                        num = (j * 100) + (elp[1][1] * 10) + elp[2][1]
+                        # num = (j * 100) + (num * 10) + k
+                    elif (i == 2):
+                        num = (elp[0][1]*100) + (j * 10) + elp[2][1]
+                    news.append(num)
+
+
 
 def onestrike(tries):
+    global news
     helphelp = []
-
     helphelp = indexhelper(tries)
-    if helphelp[0][0] == 0:
+    for i in range(0, 3):
         for j in range(0, 10):
             for k in range(0, 10):
-                if ((helphelp[0][1] != j) and (helphelp[0][1] != k) and (j != k)):
+                if ((helphelp[i][1] != j) and (helphelp[i][1] != k) and (j != k)):
                     if ((j not in tries) and (k not in tries)):
-                        num = ((helphelp[0][1]) * 100) + (j * 10) + k
-                        print('%03d' % num, end=' ')
-            print()
-    print('================')
-    if helphelp[1][0] == 1:
-        for j in range(0, 10):
-            for k in range(0, 10):
-                if ((helphelp[1][1] != j) and (helphelp[1][1] != k) and (j != k)):
-                    if ((j not in tries) and (k not in tries)):
-                        num = (j * 100) + (helphelp[1][1] * 10) + k
-                        print('%03d' % num, end=' ')
-            print()
-    print('================')
-    if helphelp[2][0] == 2:
-        for j in range(0, 10):
-            for k in range(0, 10):
-                if ((helphelp[2][1] != j) and (helphelp[2][1] != k) and (j != k)):
-                    if ((j not in tries) and (k not in tries)):
-                        num = (j * 100) + (k * 10) + helphelp[2][1]
-                        print('%03d' % num, end=' ')
-            print()
+                        num = helphelp[i][1]
+                        if(i == 0):
+                            num = (num * 100) + (j * 10) + k
+                        elif (i == 1):
+                            num = (j * 100) + (num * 10) + k
+                        elif (i == 2):
+                            num = (j * 100) + (k * 10) + num
+                        news.append(num)
+
 
 
 def main():

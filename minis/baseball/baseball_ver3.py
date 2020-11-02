@@ -133,6 +133,7 @@ def hinter(tries):
 def printer():
     global skipper
     global news
+    i=0
     if(len(skipper) == 0):
         for i in range(0,len(news)):
             skipper.append(news[i])
@@ -141,6 +142,8 @@ def printer():
         for i in range(0,len(news)):
             if news[i] in skipper:
                 print("%03d"%news[i],end="\t")
+    print()
+    print(i)
 
 def oneball(tries):
     global news

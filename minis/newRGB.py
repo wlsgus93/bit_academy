@@ -1,8 +1,8 @@
+
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, render_template
 from gpiozero import LEDBoard
-import Adafruit_DHT
 import datetime
 
 app = Flask(__name__)
@@ -14,9 +14,9 @@ now = datetime.datetime.now()
 leds = LEDBoard(14, 15, 18)
 
 led_states = {
-        'red':0,
-        'green':0,
-        'yellow':0
+    'red':0,
+    'green':0,
+    'yellow':0
 }
 
 
@@ -37,7 +37,6 @@ class Myuser(db.Model):
 def hello():
     return 'Hello World!'
 
-# ex) 192.168.1.57:5000/red/0
 @app.route('/<color>/<int:state>',methods=['GET','POST'])
 def led_switch(color, state):
     led_states[color] = state
@@ -51,15 +50,17 @@ def led_switch(color, state):
     myuser.green = 0
 
     if color == 'red':
-        myuser.red = leds.value
+        myuser.red = state
     elif color == 'yellow':
-        myuser.yellow = leds.value
-        db.session.add(myuser)
-        db.session.commit()
+        myuser.yellow = state
+    elif color == 'green':
+        myuser.green = state
 
-        return render_template('index.html', led_states=led_states)
+    db.session.add(myuser)
+    return render_template('index.html', led_states=led_states)
 
-    @app.route('/all/<int:state>', methods=['GET', 'POST'])
+
+@app.route('/all/<int:state>', methods=['GET', 'POST'])
 def all_on_off(state):
     myuser = Myuser()
 
@@ -75,26 +76,37 @@ def all_on_off(state):
         myuser.time = str(now)
 
     elif state is 1:
+
         led_states = {
+
             'red': 1,
+
             'green': 1,
+
             'yellow': 1
+
         }
-        myuser.red = 1
-        myuser.yellow = 1
-        myuser.green = 1
-        myuser.time = str(now)
+
+    myuser.red = 1
+
+    myuser.yellow = 1
+
+    myuser.green = 1
+
+    myuser.time = str(now)
 
     db.session.add(myuser)
+
     db.session.commit()
-    id += 1
 
     leds.value = tuple(led_states.values())
+
     return render_template('index.html', led_states=led_states)
 
 if __name__ == "__main__":
     basedir = os.path.abspath(os.path.dirname(__file__))
-    dbfile = os.path.join(basedir, 'RGB/db.sqlite')
+
+    dbfile = os.path.join(basedir, 'db.sqlite')
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + dbfile
